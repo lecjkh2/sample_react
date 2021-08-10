@@ -1,24 +1,32 @@
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  let [dataA, dataChange] = useState(['useState Data1', 'useState Data2']);
+  let [count, like] = useState(0);
+  
+  function changeData(){
+    var newArray = [...dataA];
+    newArray[0] = 'NewData1';
+    dataChange(newArray);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="Sample-react">
+        <div> Sample React Page</div>
+      </div>
+      <botton onClick={ changeData }>botton</botton>
+      <div className="list">
+        <h3> { dataA[0] } <span onClick={ () => { like(count+1) } }>👍</span><span onClick={ () => { like(count-1) } }> 👎</span> { count } </h3>
+        
+        <p>2월 17일</p>
+        <hr/>
+      </div>
+
     </div>
+  
   );
 }
 
